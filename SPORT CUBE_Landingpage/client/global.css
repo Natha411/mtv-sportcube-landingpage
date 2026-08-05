@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root { --background: 38 34% 93%; --foreground: 27 22% 13%; --card: 38 34% 93%; --card-foreground: 27 22% 13%; --popover: 38 34% 93%; --popover-foreground: 27 22% 13%; --primary: 352 97% 45%; --primary-foreground: 0 0% 100%; --secondary: 29 33% 38%; --secondary-foreground: 0 0% 100%; --muted: 37 22% 86%; --muted-foreground: 27 12% 40%; --accent: 43 92% 60%; --accent-foreground: 27 22% 13%; --destructive: 0 84% 60%; --destructive-foreground: 0 0% 100%; --border: 27 15% 78%; --input: 27 15% 78%; --ring: 352 97% 45%; --radius: .25rem; --sidebar-background: 27 22% 13%; --sidebar-foreground: 0 0% 100%; --sidebar-primary: 352 97% 45%; --sidebar-primary-foreground: 0 0% 100%; --sidebar-accent: 29 33% 38%; --sidebar-accent-foreground: 0 0% 100%; --sidebar-border: 27 15% 25%; --sidebar-ring: 352 97% 45%; }
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground; font-family: "Manrope", sans-serif; }
+  button, a, input { font: inherit; }
+}
+@layer components {
+  .font-display { font-family: "Space Grotesk", sans-serif; }
+  .eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-coral; }
+  .section-title { @apply max-w-full break-words font-display text-5xl font-bold uppercase leading-[0.9] tracking-[-0.06em] md:text-7xl; }
+  .section-title span { @apply text-coral; }
+  .nav-link { @apply whitespace-nowrap transition-colors hover:text-sun; }
+  .button-light, .button-dark, .button-outline { @apply inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-6 py-4 text-xs font-extrabold uppercase tracking-[0.1em] transition; }
+  .button-light { @apply bg-white text-ink hover:bg-sun; }
+  .button-dark { @apply bg-ink text-white hover:bg-wood; }
+  .button-outline { @apply border border-white/40 hover:border-white hover:bg-white hover:text-ink; }
+  .form-input { @apply border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-sm outline-none placeholder:text-ink/40 focus:border-coral; }
+  .grain { background-image: radial-gradient(rgba(37, 29, 22, .09) .7px, transparent .7px); background-size: 7px 7px; }
+  .floor { min-height: 64px; }
+  #angebot > div { position: relative; }
+  #angebot > div > div:first-child > div:last-child { position: static; }
+  #angebot > div > div:first-child > div:last-child button { position: absolute; top: 360px; z-index: 20; background: hsl(var(--sidebar-background) / .85); }
+  #angebot > div > div:first-child > div:last-child button:first-child { left: 0; }
+  #angebot > div > div:first-child > div:last-child button:nth-child(2) { right: 0; }
+  @media (max-width: 767px) {
+    #angebot > div > div:first-child > div:last-child button { top: 390px; }
+  }
+  .offer-track { --offer-card-width: calc(100vw - 2.5rem); --offer-step: calc(var(--offer-card-width) + 1rem); }
+  .offer-track > article { flex: 0 0 var(--offer-card-width); min-width: 0; }
+  @media (min-width: 640px) {
+    .offer-track { --offer-card-width: calc((100vw - 2.5rem) * .48); }
+  }
+  @media (min-width: 1024px) {
+    .offer-track { --offer-card-width: calc((100vw - 4.5rem) * .48); }
+  }
+  @media (min-width: 1280px) {
+    .offer-track { --offer-card-width: calc(min(100vw - 4.5rem, 1280px) * .31); }
+  }
+  .flip-card { min-height: 360px; perspective: 1200px; outline: none; }
+  .flip-inner { position: relative; height: 100%; min-height: 360px; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+  .flip-card:hover .flip-inner, .flip-card:focus .flip-inner, .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
+  .flip-face { position: absolute; inset: 0; display: flex; min-height: 360px; flex-direction: column; justify-content: flex-end; overflow: hidden; padding: 1.75rem; background-position: center; background-size: cover; backface-visibility: hidden; }
+  .flip-front { color: white; }
+  .flip-back { transform: rotateY(180deg); justify-content: flex-start; }
+  .flip-face h3, .flip-face p { max-width: 100%; overflow-wrap: anywhere; }
+  @media (max-width: 639px) {
+    .section-title { font-size: clamp(2.5rem, 10.5vw, 3.25rem); }
+    .flip-face { padding: 1.25rem; }
+  }
+}
