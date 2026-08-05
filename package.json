@@ -1,0 +1,11 @@
+{
+  "name": "mtv-sportcube-landingpage",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --dir \"SPORT CUBE_Landingpage\" dev",
+    "build": "pnpm --dir \"SPORT CUBE_Landingpage\" build",
+    "typecheck": "pnpm --dir \"SPORT CUBE_Landingpage\" typecheck",
+    "test": "pnpm --dir \"SPORT CUBE_Landingpage\" test"
+  },
+  "packageManager": "pnpm@10.14.0"
+}
