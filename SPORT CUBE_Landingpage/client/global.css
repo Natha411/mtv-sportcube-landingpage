@@ -27,6 +27,9 @@
   #angebot > div > div:first-child > div:last-child button { position: absolute; top: 360px; z-index: 20; background: hsl(var(--sidebar-background) / .85); }
   #angebot > div > div:first-child > div:last-child button:first-child { left: 0; }
   #angebot > div > div:first-child > div:last-child button:nth-child(2) { right: 0; }
+  @media (min-width: 1024px) {
+    .offerings-link { position: absolute; top: 0; right: 0; margin-top: 0; }
+  }
   @media (max-width: 767px) {
     #angebot > div > div:first-child > div:last-child button { top: 390px; }
   }
