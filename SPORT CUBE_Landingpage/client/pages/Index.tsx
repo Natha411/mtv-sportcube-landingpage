@@ -35,9 +35,17 @@ const equipment = [
   ["MultiMotionCenter", "Parcours für jedes Level.", "Ein modulares Kletter- und Bewegungskonzept mit Kletterstangen, Leitern und Podeste, welche sich flexibel ausklappen lassen und mit Bänken, Kästen und Matten ergänzbar sind. So entsteht immer wieder eine neue Landschaft zum Klettern, Balancieren, Hangeln und gemeinsamen Wachsen.", "https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Ffea9cf087ea04aab9349f2b9fcb4ca35?format=webp&width=800&height=1200"],
 ] as const;
 const faqs = [
-  ["Wann eröffnet das neue Gebäude?", "Wir freuen uns, das neue Sportzentrum voraussichtlich im Laufe des Jahres 2026 zu eröffnen. Aktuelle Meilensteine teilen wir regelmäßig."],
-  ["Kann ich schon jetzt Mitglied werden?", "Ja. Deine Mitgliedschaft beim MTV Stuttgart gilt selbstverständlich auch für unser neues Zuhause. Entdecke passende Angebote auf unserer Hauptwebsite."],
-  ["Welche Angebote wird es geben?", "Freu dich auf moderne Hallenflächen, ein Mikrostudio, vielseitige Kursräume, das ActionCenter und Treffpunkte für die ganze Gemeinschaft."],
+  ["Muss ich Mitglied im MTV Stuttgart sein, um den SPORT CUBE zu nutzen?", "Nein, du musst kein Mitglied sein."],
+  ["Was kostet eine Mitgliedschaft im SPORT CUBE?", "Es gibt keine exklusive Mitgliedschaft für den SPORT CUBE. Je nach Kurs gibt es verschiedene Optionen, von Einmal-Drop-In über 10er-Karten bis hin zu 8er-Kursen. In der Kursinfo findest du unter Kursgebühren die jeweiligen Infos für deinen Kurs."],
+  ["Wie werde ich Mitglied?", "Über unsere Hauptwebsite findest du mehr Infos."],
+  ["Gibt es ein Probetraining?", "Ja, wir haben ein Schnupperangebot für bestimmte Kurse im Mikrostudio."],
+  ["Welche Kurse und Angebote gibt es im SPORT CUBE?", "Turnen & Kindersport, Fitness & Mikrostudio, Reha- & Para-Sport, Yoga & Pilates sowie Tanzkurse."],
+  ["Gibt es auch Angebote für Menschen mit Behinderung?", "Ja, der SPORT CUBE ist 100% barrierefrei und wird von unserer Parasport-Abteilung genutzt werden. Ansprechpartnerin hierfür ist Mandy Pierer. Mehr Infos findest du hier."],
+  ["Kann ich den SPORT CUBE auch für private Feiern nutzen?", "Ja, die Sporthalle und die Gymnastikhalle können für jegliche Events, Workshops, Kindergeburtstage, Junggesellenabschiede etc. gemietet werden. Zudem gibt es einen Sitzungsraum im Untergeschoss, der von unseren Abteilungen genutzt werden kann. Im 3. Obergeschoss befindet sich des Weiteren ein Seminarraum, der ebenfalls extern vermietet werden kann."],
+  ["Wann eröffnet der SPORT CUBE?", "Der SPORT CUBE wird voraussichtlich im Januar 2027 eröffnen."],
+  ["Wie kann ich den Baufortschritt verfolgen?", "Über Social Media, unseren MTV-Newsletter und regelmäßige Updates auf unserer Hauptwebsite mtv-stuttgart.de."],
+  ["Wie kann ich den SPORT CUBE unterstützen?", "Mit einer Spende auf unser Spendenkonto IBAN DE16 6004 0071 0553 6446 02 oder via PayPal. Zudem kannst du als Bausteinspender:in Teil des SPORT CUBE werden."],
+  ["Was ist die Bausteinaktion?", "Unterstützer:innen werden mit ihrem Namen dauerhaft auf der Spendenwand im Gebäude sichtbar gemacht. Hier geht's zur Bausteinaktion."],
 ];
 
 function Brand() { return <span className="flex items-center gap-3" aria-label="MTV Sport Cube"><span className="block h-12 w-12 overflow-hidden rounded-full"><img src={logo} alt="MTV Stuttgart" className="h-full w-full object-cover" /></span><span className="font-display text-base font-extrabold uppercase tracking-[-0.04em] text-white sm:text-xl">SPORT CUBE</span></span>; }
