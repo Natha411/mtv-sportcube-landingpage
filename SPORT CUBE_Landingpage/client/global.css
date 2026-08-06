@@ -23,6 +23,7 @@
   .button-light { @apply bg-white text-ink hover:bg-sun; }
   .button-dark { @apply bg-ink text-white hover:bg-wood; }
   .button-outline { @apply border border-white/40 hover:border-white hover:bg-white hover:text-ink; }
+  .offer-carousel-control { background-color: #f6c94c; border-color: #f6c94c; color: #241d16; }
   .form-input { @apply border-0 border-b border-ink/20 bg-transparent px-0 py-3 text-sm outline-none placeholder:text-ink/40 focus:border-coral; }
   .grain { background-image: radial-gradient(rgba(37, 29, 22, .09) .7px, transparent .7px); background-size: 7px 7px; }
   .floor { min-height: 64px; }
