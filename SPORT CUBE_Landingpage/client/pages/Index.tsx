@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     question: "Was ist die Bausteinaktion?",
-    answer: <>Unterstützer:innen werden mit ihrem Namen dauerhaft auf der Spendenwand im Gebäude sichtbar gemacht. Hier geht's zur Bausteinaktion.</>,
+    answer: <>Unterstützer:innen werden mit ihrem Namen dauerhaft auf der Spendenwand im Gebäude sichtbar gemacht. <a className="faq-answer-link" href="https://www.mtv-stuttgart.de/ueber-uns/sportpunkt#c1887" target="_blank" rel="noreferrer">Hier</a> geht's zur Bausteinaktion.</>,
   },
 ];
 
