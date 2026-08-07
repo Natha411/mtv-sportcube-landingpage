@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     fs: {
-      allow: [__dirname, "./client", "./shared"],
+      allow: [path.resolve(__dirname), path.resolve(__dirname, "./client"), path.resolve(__dirname, "./shared")],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
     },
   },
