@@ -49,15 +49,15 @@ const faqs = [
   },
   {
     question: "Gibt es ein Probetraining?",
-    answer: <>Ja, wir haben ein spezielles Schnupperangebot für bestimmte Kurse im Mikrostudio und der Gymnastikhalle. Das hängt jedoch vom jeweiligen Kurs ab. Schau dafür am besten in den Kursinfos nach. Das <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">Kursangebot findest du hier</a>.</>,
+    answer: <>Ja, wir haben ein spezielles Schnupperangebot für bestimmte Kurse im Mikrostudio und der Gymnastikhalle. Das hängt jedoch vom jeweiligen Kurs ab. Schau dafür am besten in den Kursinfos nach. Das Kursangebot findest du <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">hier</a>.</>,
   },
   {
     question: "Welche Kurse und Angebote gibt es im SPORT CUBE?",
-    answer: <>Turnen &amp; Kindersport, Fitness &amp; Mikrostudio, Reha- &amp; Para-Sport, Yoga &amp; Pilates sowie Tanzkurse. <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">Alle Kurse findest du hier</a>.</>,
+    answer: <>Turnen &amp; Kindersport, Fitness &amp; Mikrostudio, Reha- &amp; Para-Sport, Yoga &amp; Pilates sowie Tanzkurse. Alle Kurse findest du <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">hier</a>.</>,
   },
   {
     question: "Gibt es auch Angebote für Menschen mit Behinderung?",
-    answer: <>Ja, der SPORT CUBE ist 100% barrierefrei und wird von unserer Parasport-Abteilung genutzt werden. Ansprechpartnerin hierfür ist Mandy Pierer. <a className="faq-answer-link" href={mainSite} target="_blank" rel="noreferrer">Mehr Infos findest du hier</a>.</>,
+    answer: <>Ja, der SPORT CUBE ist 100% barrierefrei und wird von unserer Parasport-Abteilung genutzt werden. Ansprechpartnerin hierfür ist Mandy Pierer. Mehr Infos findest du <a className="faq-answer-link" href={mainSite} target="_blank" rel="noreferrer">hier</a>.</>,
   },
   {
     question: "Kann ich den SPORT CUBE auch für private Events nutzen?",
