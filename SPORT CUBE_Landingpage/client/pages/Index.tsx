@@ -4,6 +4,7 @@ import { ArrowDownRight, ArrowLeft, ArrowRight, BusFront, ChevronDown, Facebook,
 const mainSite = "https://www.mtv-stuttgart.de/";
 const membershipUrl = "https://www.mtv-stuttgart.de/service/jetzt-anmelden";
 const sportCoursesUrl = "https://www.mtv-stuttgart.de/sportkurse";
+const paraSportUrl = "https://www.mtv-stuttgart.de/para-sport";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F97956c646ef740de89498cdc9738b7d6%2F706e7fda6e774224bf7097e38f689723?format=webp&width=800&height=1200";
 const heroImage = "https://cdn.builder.io/api/v1/image/assets%2F5aa4d4eccac841728f0fdf6e63c42cb1%2F9d199db7671c4f0c902086d77935797e?format=webp&width=1600&height=900";
 const photos = [
@@ -57,7 +58,7 @@ const faqs = [
   },
   {
     question: "Gibt es auch Angebote für Menschen mit Behinderung?",
-    answer: <>Ja, der SPORT CUBE ist 100% barrierefrei und wird von unserer Parasport-Abteilung genutzt werden. Ansprechpartnerin hierfür ist Mandy Pierer. Mehr Infos findest du <a className="faq-answer-link" href={mainSite} target="_blank" rel="noreferrer">hier</a>.</>,
+    answer: <>Ja, der SPORT CUBE ist 100% barrierefrei und wird von unserer Parasport-Abteilung genutzt werden. Ansprechpartnerin hierfür ist Mandy Pierer. Mehr Infos findest du <a className="faq-answer-link" href={paraSportUrl} target="_blank" rel="noreferrer">hier</a>.</>,
   },
   {
     question: "Kann ich den SPORT CUBE auch für private Events nutzen?",
