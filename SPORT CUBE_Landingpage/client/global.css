@@ -12,6 +12,7 @@
 @layer components {
   .font-display { font-family: "Space Grotesk", sans-serif; }
   .eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.18em] text-coral; }
+  .section-eyebrow { font-family: "Space Grotesk", sans-serif !important; }
   .section-title { @apply max-w-full break-words font-display text-5xl font-bold uppercase leading-[0.9] tracking-[-0.06em] md:text-7xl; }
   .section-title span { @apply text-coral; }
   .section-title .location-heading-primary { @apply text-ink; }
