@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     question: "Welche Kurse und Angebote gibt es im SPORT CUBE?",
-    answer: <>Turnen &amp; Kindersport, Fitness &amp; Mikrostudio, Reha- &amp; Para-Sport, Yoga &amp; Pilates sowie Tanzkurse. Alle Kurse findest du <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">hier</a>.</>,
+    answer: <>Von Turnen &amp; Kindersport, HIIT &amp; HYROX, Reha- &amp; Para-Sport über Yoga &amp; Pilates sowie Tanzkurse haben wir ein breites Angebot an Kursen. Alle Kurse sowie Kursdetails findest du <a className="faq-answer-link" href={sportCoursesUrl} target="_blank" rel="noreferrer">hier</a>.</>,
   },
   {
     question: "Gibt es auch Angebote für Menschen mit Behinderung?",
