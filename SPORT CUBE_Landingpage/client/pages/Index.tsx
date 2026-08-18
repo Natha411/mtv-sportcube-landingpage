@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import { ArrowDownRight, ArrowLeft, ArrowRight, BusFront, ChevronDown, Facebook, Instagram, MapPin, Menu, ParkingCircle, Plus, Sparkles, X } from "lucide-react";
 
 const mainSite = "https://www.mtv-stuttgart.de/";
-const membershipUrl = "https://www.mtv-stuttgart.de/service/jetzt-anmelden";
+const membershipUrl = "https://www.mtv-stuttgart.de/service/jetzt-anmelden/anmeldeformular-de";
 const sportCoursesUrl = "https://www.mtv-stuttgart.de/sportkurse";
 const paraSportUrl = "https://www.mtv-stuttgart.de/para-sport";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F97956c646ef740de89498cdc9738b7d6%2F706e7fda6e774224bf7097e38f689723?format=webp&width=800&height=1200";
