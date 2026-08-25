@@ -35,7 +35,7 @@ const equipment = [
   ["ActionCenter", "Bewegung als Abenteuer.", "Wenn sich die Wand öffnet, wird die Halle zur Abenteuerlandschaft: Kletternetz, Sprossenwand, Rutsche und viele weitere Elemente laden dazu ein, mutig loszulegen, gemeinsam zu entdecken und über sich hinauszuwachsen.", "https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F295551c1782c47a791e8475db7505694?format=webp&width=800&height=1200"],
   ["MultiMotionCenter", "Parcours für jedes Level.", "Ein modulares Kletter- und Bewegungskonzept mit Kletterstangen, Leitern und Podeste, welche sich flexibel ausklappen lassen und mit Bänken, Kästen und Matten ergänzbar sind. So entsteht immer wieder eine neue Landschaft zum Klettern, Balancieren, Hangeln und gemeinsamen Wachsen.", "https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F8058a5f0141b4ad6b569bcfbbe308ba3?format=webp&width=800&height=1200"],
 ] as const;
-const sponsors = ["Learnteq", "FinanzGefährte", "Friess + Merkle", "Dinkelacker-Schwaben Bräu", "BBBank und PSD Bank"] as const;
+const sponsors = ["Learnteq", "FinanzGefährte", "Friess + Merkle", "Dinkelacker-Schwaben Bräu", "BBBank eG", "PSD Bank RheinNeckarSaar eG"] as const;
 const faqs = [
   {
     question: "Muss ich Mitglied im MTV Stuttgart sein, um den SPORT CUBE zu nutzen?",
