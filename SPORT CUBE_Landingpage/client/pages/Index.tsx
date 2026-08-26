@@ -5,7 +5,7 @@ const mainSite = "https://www.mtv-stuttgart.de/";
 const membershipUrl = "https://www.mtv-stuttgart.de/service/jetzt-anmelden";
 const sportCoursesUrl = "https://www.mtv-stuttgart.de/sportkurse";
 const paraSportUrl = "https://www.mtv-stuttgart.de/para-sport";
-const logo = "https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fef6426e287db4191ba58c870e3efdc17?format=webp&width=800&height=1200";
+const logo = "https://cdn.builder.io/api/v1/image/assets%2F97956c646ef740de89498cdc9738b7d6%2F706e7fda6e774224bf7097e38f689723?format=webp&width=800&height=1200";
 const heroVideo = "https://cdn.builder.io/o/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fa7ff2f5ec42d47ffa8317c64a69b325c?alt=media&token=05a168a6-ea40-4b47-81ad-2c1138cbcd58&apiKey=ddb6ea6a9b7b4321af836c3cfcfa84c7";
 const photos = [
   "https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Ff4fec728abd04aa395551f9aef7f8219?format=webp&width=800&height=1200",
