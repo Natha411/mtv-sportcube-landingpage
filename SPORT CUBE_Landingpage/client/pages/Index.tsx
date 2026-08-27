@@ -88,7 +88,7 @@ const faqs = [
 ];
 
 function Brand() { return <span className="flex items-center gap-3" aria-label="MTV Sport Cube"><span className="block h-12 w-12 overflow-hidden rounded-full"><img src={logo} alt="MTV Stuttgart" className="h-full w-full object-cover" /></span><span className="font-display text-base font-extrabold uppercase tracking-[-0.04em] text-white sm:text-xl">SPORT CUBE</span></span>; }
-function TransparentLogo({ src, alt, className, removeWhitePixels = false }: { src: string; alt: string; className: string; removeWhitePixels?: boolean }) {
+function TransparentLogo({ src, alt, className, removeWhitePixels = false, removeDarkBackground = false }: { src: string; alt: string; className: string; removeWhitePixels?: boolean; removeDarkBackground?: boolean }) {
   const [processedSrc, setProcessedSrc] = useState(src);
   useEffect(() => {
     const image = new Image();
@@ -105,6 +105,8 @@ function TransparentLogo({ src, alt, className, removeWhitePixels = false }: { s
         const { data, width, height } = imageData;
         const background = new Uint8Array(width * height);
         const queue: number[] = [];
+        const darkBackground = new Uint8Array(width * height);
+        const darkQueue: number[] = [];
         const addBackgroundPixel = (x: number, y: number) => {
           const index = y * width + x;
           if (background[index]) return;
@@ -113,13 +115,26 @@ function TransparentLogo({ src, alt, className, removeWhitePixels = false }: { s
           background[index] = 1;
           queue.push(index);
         };
+        const addDarkBackgroundPixel = (x: number, y: number) => {
+          if (!removeDarkBackground) return;
+          const index = y * width + x;
+          if (darkBackground[index]) return;
+          const offset = index * 4;
+          if (data[offset] > 120 || data[offset + 1] > 120 || data[offset + 2] > 120) return;
+          darkBackground[index] = 1;
+          darkQueue.push(index);
+        };
         for (let x = 0; x < width; x += 1) {
           addBackgroundPixel(x, 0);
           addBackgroundPixel(x, height - 1);
+          addDarkBackgroundPixel(x, 0);
+          addDarkBackgroundPixel(x, height - 1);
         }
         for (let y = 1; y < height - 1; y += 1) {
           addBackgroundPixel(0, y);
           addBackgroundPixel(width - 1, y);
+          addDarkBackgroundPixel(0, y);
+          addDarkBackgroundPixel(width - 1, y);
         }
         for (let cursor = 0; cursor < queue.length; cursor += 1) {
           const index = queue[cursor];
@@ -130,11 +145,20 @@ function TransparentLogo({ src, alt, className, removeWhitePixels = false }: { s
           if (y > 0) addBackgroundPixel(x, y - 1);
           if (y < height - 1) addBackgroundPixel(x, y + 1);
         }
+        for (let cursor = 0; cursor < darkQueue.length; cursor += 1) {
+          const index = darkQueue[cursor];
+          const x = index % width;
+          const y = Math.floor(index / width);
+          if (x > 0) addDarkBackgroundPixel(x - 1, y);
+          if (x < width - 1) addDarkBackgroundPixel(x + 1, y);
+          if (y > 0) addDarkBackgroundPixel(x, y - 1);
+          if (y < height - 1) addDarkBackgroundPixel(x, y + 1);
+        }
         for (let index = 0; index < width * height; index += 1) {
           const offset = index * 4;
           const greenBackground = data[offset + 1] > 70 && data[offset + 1] > data[offset] * 1.2 && data[offset + 1] > data[offset + 2] * 1.1;
           const whitePixel = data[offset] > 235 && data[offset + 1] > 235 && data[offset + 2] > 235;
-          if (background[index] || greenBackground || (removeWhitePixels && whitePixel)) data[offset + 3] = 0;
+          if (background[index] || darkBackground[index] || greenBackground || (removeWhitePixels && whitePixel)) data[offset + 3] = 0;
         }
         context.putImageData(imageData, 0, 0);
         setProcessedSrc(canvas.toDataURL("image/png"));
@@ -173,6 +197,6 @@ export default function Index() {
       <section className="sponsor-strip bg-ink py-8 text-white" aria-label="Unsere Sponsoren"><div className="sponsor-marquee"><div className="sponsor-track">{[...sponsors, ...sponsors].map((sponsor, index) => <span className="sponsor-logo" key={`${sponsor}-${index}`}>{sponsor === "Stuttgarter Kinderstiftung" ? <TransparentLogo src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F1d434dc20bba40b98dd716dea1d306bc?format=webp&width=800&height=1200" alt="Stuttgarter Kinderstiftung" className="h-12 w-auto max-w-[240px] object-contain brightness-0 invert" removeWhitePixels /> : sponsor === "SCHARR" ? <img src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F172bdfc29d0644f2bef35f8fe953bc3b?format=webp&width=800&height=1200" alt="SCHARR" className="h-12 w-auto max-w-[240px] object-contain brightness-0 invert" /> : sponsor === "PSD Bank RheinNeckarSaar eG" ? <TransparentLogo src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F7dc6b34ec9de4da3bdb9a38ee7fd9682?format=webp&width=800&height=1200" alt="PSD Bank RheinNeckarSaar eG" className="h-12 w-12 object-contain" /> : sponsor === "FinanzGefährte" ? <img src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fc0ee10192bfa4d278cccf24aef44e288?format=webp&width=800&height=1200" alt="FinanzGefährte" className="h-12 w-auto max-w-[240px] object-contain brightness-0 invert" /> : sponsor === "Friess + Merkle" ? <TransparentLogo src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fce3dd2972ee643d691e1ec863673d7e6?format=webp&width=800&height=1200" alt="Friess + Merkle Elektrotechnik" className="h-12 w-auto max-w-[240px] object-contain brightness-0 invert" removeWhitePixels /> : sponsor === "BBBank eG" ? <img src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fe3e748efb08b4c439cfc24fd6b8b296e?format=webp&width=800&height=1200" alt="BBBank eG" className="h-12 w-auto max-w-[240px] object-contain brightness-0 invert" /> : sponsor === "Dinkelacker-Schwaben Bräu" ? <span className="text-center">Dinkelacker-Schwaben<br />Bräu</span> : sponsor}</span>)}</div></div><div className="mt-6 flex justify-center"><a href="https://www.paypal.com/donate/?hosted_button_id=CJHGKCM7KZD4J" target="_blank" rel="noreferrer" className="button-light">Werde jetzt Unterstützer:in <ArrowRight size={17} /></a></div></section>
       <section className="bg-cream-dark px-5 py-24 lg:px-9 lg:py-32"><div className="mx-auto max-w-[1280px]"><p className="eyebrow text-base font-[Space_Grotesk,sans-serif]">06 / FAQS</p><h2 className="section-title mt-5">Gut zu<br /><span>Wissen.</span></h2><div className="mt-12 border-t border-ink/20">{faqs.map(({ question, answer }, index) => <div key={question} className="border-b border-ink/20"><button onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="flex w-full items-center justify-between gap-4 py-5 text-left font-display text-base font-bold sm:py-6 sm:text-lg"><span className="min-w-0 break-words">{question}</span><ChevronDown className={`shrink-0 text-coral transition ${openFaq === index ? "rotate-180" : ""}`} /></button>{openFaq === index && <p className="max-w-2xl pb-7 text-sm leading-relaxed text-ink/65">{answer}</p>}</div>)}</div></div></section>
     </main>
-    <footer className="bg-ink px-5 py-12 text-white lg:px-9"><div className="mx-auto flex max-w-[1280px] flex-col justify-between gap-10 md:flex-row md:items-end"><div><Brand /><p className="mt-5 max-w-xs text-base leading-relaxed text-white/50">Mehr Community. Mehr Angebot. Mehr Möglichkeiten.</p></div><div className="flex gap-4"><a href="https://www.instagram.com/mtvstuttgart1843ev/" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram /></a><a href="https://www.facebook.com/mtv.stuttgart/" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook /></a><a href="https://fr.linkedin.com/company/mtv-stuttgart-1843-e-v" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin /></a><a href="https://www.youtube.com/@mtvstuttgart1843eV" target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube /></a><a href="https://open.spotify.com/show/033KSPWWRBOjlTzB0Q6VSy?si=8fe8a1aa48a54d5f" target="_blank" rel="noreferrer" aria-label="Spotify"><img src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2F0f6789df4cec497fadedb28408927f24?format=webp&width=800&height=1200" alt="Spotify" className="h-8 w-8 object-contain mix-blend-screen" /></a><a href="https://podcasts.apple.com/de/podcast/westfunk/id6788110761" target="_blank" rel="noreferrer" aria-label="Apple Podcasts"><Podcast /></a><a href="https://link.deezer.com/s/34dGXgmClW9G1zwLjIk7Q" target="_blank" rel="noreferrer" aria-label="Deezer"><Music2 /></a></div></div><div className="mx-auto mt-12 flex max-w-[1280px] flex-col justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/40 md:flex-row"><span className="text-sm">© 2026 MTV Stuttgart 1843 e.V.</span><span><a href="https://www.mtv-stuttgart.de/impressum" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Impressum</a> · <a href="https://www.mtv-stuttgart.de/datenschutz" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Datenschutz</a> · <a href="https://www.mtv-stuttgart.de/service/kontakt" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Kontakt</a></span></div></footer>
+    <footer className="bg-ink px-5 py-12 text-white lg:px-9"><div className="mx-auto flex max-w-[1280px] flex-col justify-between gap-10 md:flex-row md:items-end"><div><Brand /><p className="mt-5 max-w-xs text-base leading-relaxed text-white/50">Mehr Community. Mehr Angebot. Mehr Möglichkeiten.</p></div><div className="flex gap-4"><a href="https://www.instagram.com/mtvstuttgart1843ev/" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram /></a><a href="https://www.facebook.com/mtv.stuttgart/" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook /></a><a href="https://fr.linkedin.com/company/mtv-stuttgart-1843-e-v" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin /></a><a href="https://www.youtube.com/@mtvstuttgart1843eV" target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube /></a><a href="https://open.spotify.com/show/033KSPWWRBOjlTzB0Q6VSy?si=8fe8a1aa48a54d5f" target="_blank" rel="noreferrer" aria-label="Spotify"><TransparentLogo src="https://cdn.builder.io/api/v1/image/assets%2Fddb6ea6a9b7b4321af836c3cfcfa84c7%2Fd5d1b61b30aa44d39d93c420c11e28e7?format=webp&width=800&height=1200" alt="Spotify" className="h-8 w-8 object-contain mix-blend-screen" removeDarkBackground /></a><a href="https://podcasts.apple.com/de/podcast/westfunk/id6788110761" target="_blank" rel="noreferrer" aria-label="Apple Podcasts"><Podcast /></a><a href="https://link.deezer.com/s/34dGXgmClW9G1zwLjIk7Q" target="_blank" rel="noreferrer" aria-label="Deezer"><Music2 /></a></div></div><div className="mx-auto mt-12 flex max-w-[1280px] flex-col justify-between gap-4 border-t border-white/15 pt-5 text-xs text-white/40 md:flex-row"><span className="text-sm">© 2026 MTV Stuttgart 1843 e.V.</span><span><a href="https://www.mtv-stuttgart.de/impressum" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Impressum</a> · <a href="https://www.mtv-stuttgart.de/datenschutz" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Datenschutz</a> · <a href="https://www.mtv-stuttgart.de/service/kontakt" target="_blank" rel="noreferrer" className="text-sm transition-colors hover:text-white">Kontakt</a></span></div></footer>
   </div>;
 }
