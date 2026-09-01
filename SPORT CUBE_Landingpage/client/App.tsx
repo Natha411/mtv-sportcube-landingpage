@@ -17,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="pointer-events-auto fixed bottom-5 right-5 z-[60] flex h-12 w-12 items-center justify-center rounded-full bg-ink/95 text-white shadow-lg lg:bottom-6 lg:right-6">
+      <div className="pointer-events-auto fixed bottom-5 right-5 z-[60]">
         {createElement("easy-speech")}
       </div>
       <BrowserRouter>
