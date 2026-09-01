@@ -49,14 +49,19 @@ const App = () => {
 
     const positionAssist = () => {
       const isMobile = window.matchMedia("(max-width: 700px)").matches;
+      const edgeOffset = isMobile ? "1rem" : "1.25rem";
       const assistBottom = isMobile ? "4.25rem" : "5.25rem";
+      easySpeech.style.setProperty("right", edgeOffset, "important");
+      easySpeech.style.setProperty("bottom", isMobile ? "1rem" : "1.25rem", "important");
+      easySpeech.style.setProperty("width", isMobile ? "44px" : "60px", "important");
+      easySpeech.style.setProperty("height", isMobile ? "44px" : "60px", "important");
       const externalAssist = document.querySelector<HTMLElement>(
         'aside[aria-label^="Visuelle Assistenzsoftware"]',
       );
       if (externalAssist) {
         externalAssist.style.setProperty("position", "fixed", "important");
         externalAssist.style.setProperty("top", "auto", "important");
-        externalAssist.style.setProperty("right", "1.25rem", "important");
+        externalAssist.style.setProperty("right", edgeOffset, "important");
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
         externalAssist.style.setProperty("z-index", "9999", "important");
@@ -77,7 +82,7 @@ const App = () => {
       if (assist) {
         assist.style.setProperty("position", "fixed", "important");
         assist.style.setProperty("top", "auto", "important");
-        assist.style.setProperty("right", "1.25rem", "important");
+        assist.style.setProperty("right", edgeOffset, "important");
         assist.style.setProperty("bottom", assistBottom, "important");
         assist.style.setProperty("left", "auto", "important");
         assist.style.setProperty("z-index", "9999", "important");
