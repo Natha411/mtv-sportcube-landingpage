@@ -19,19 +19,28 @@ const App = () => {
       speech?.style.setProperty("margin-right", "0", "important");
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const assist = shadowRoot?.getElementById("eyeAble_columID");
-      if (!assist) return;
-      assist.style.setProperty("position", "fixed", "important");
-      assist.style.setProperty("top", "auto", "important");
-      assist.style.setProperty("right", "1.25rem", "important");
-      assist.style.setProperty("bottom", "9rem", "important");
-      assist.style.setProperty("left", "auto", "important");
-      assist.style.setProperty("z-index", "9999", "important");
+      if (assist) {
+        assist.style.setProperty("position", "fixed", "important");
+        assist.style.setProperty("top", "auto", "important");
+        assist.style.setProperty("right", "1.25rem", "important");
+        assist.style.setProperty("bottom", "9rem", "important");
+        assist.style.setProperty("left", "auto", "important");
+        assist.style.setProperty("z-index", "9999", "important");
+      }
       const icon = shadowRoot?.getElementById("mainIconID");
-      if (!icon) return;
-      icon.style.setProperty("margin-left", "0", "important");
-      icon.style.setProperty("margin-right", "0", "important");
-      icon.style.setProperty("padding-left", "0px", "important");
-      icon.style.setProperty("padding-right", "0px", "important");
+      if (icon) {
+        icon.style.setProperty("margin-left", "0", "important");
+        icon.style.setProperty("margin-right", "0", "important");
+        icon.style.setProperty("padding-left", "0px", "important");
+        icon.style.setProperty("padding-right", "0px", "important");
+      }
+      const mobileLabel = shadowRoot?.querySelector<HTMLElement>('[eaarialangid="accessibleLinkTextMobile"]');
+      mobileLabel?.setAttribute("aria-label", "Visuelle Assistenzsoftware öffnen");
+      const accessibleLink = shadowRoot?.querySelector<HTMLElement>('[ealangid="accessibleLinkText"]');
+      if (accessibleLink) {
+        accessibleLink.textContent = "Visuelle Assistenzsoftware öffnen. Mit der Tastatur über ALT + 1 erreichbar";
+        accessibleLink.setAttribute("aria-label", "Visuelle Assistenzsoftware öffnen");
+      }
     };
 
     positionAssist();
