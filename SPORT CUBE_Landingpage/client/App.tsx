@@ -70,6 +70,15 @@ const App = () => {
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
         externalAssist.style.setProperty("z-index", "100001", "important");
+        externalAssist.style.setProperty("background", "transparent", "important");
+        externalAssist.style.setProperty("border", "0", "important");
+        externalAssist.style.setProperty("box-shadow", "none", "important");
+        externalAssist.style.setProperty("padding", "0", "important");
+        externalAssist.style.setProperty("margin", "0", "important");
+        externalAssist.style.setProperty("width", "max-content", "important");
+        externalAssist.style.setProperty("height", "max-content", "important");
+        externalAssist.style.setProperty("min-width", "0", "important");
+        externalAssist.style.setProperty("min-height", "0", "important");
         externalAssist.style.setProperty(
           "transform",
           `scale(${assistScale})`,
@@ -89,6 +98,15 @@ const App = () => {
         toolbar.style.setProperty("flex-direction", "column", "important");
         toolbar.style.setProperty("justify-content", "flex-end", "important");
         toolbar.style.setProperty("align-items", "flex-end", "important");
+        toolbar.style.setProperty("background", "transparent", "important");
+        toolbar.style.setProperty("border", "0", "important");
+        toolbar.style.setProperty("box-shadow", "none", "important");
+        toolbar.style.setProperty("padding", "0", "important");
+        toolbar.style.setProperty("margin", "0", "important");
+        toolbar.style.setProperty("width", "max-content", "important");
+        toolbar.style.setProperty("height", "max-content", "important");
+        toolbar.style.setProperty("min-width", "0", "important");
+        toolbar.style.setProperty("min-height", "0", "important");
       }
 
       const assist = shadowRoot?.getElementById("eyeAble_columID");
