@@ -14,6 +14,33 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
+    const easySpeech = document.createElement("easy-speech");
+    const easySpeechAttributes = {
+      display: "flex",
+      position: "fixed",
+      bottom: "1.25rem",
+      right: "1.25rem",
+      width: "60px",
+      height: "60px",
+      "z-index": "9998",
+      "bg-color": "#151414",
+      fill: "#ffffff",
+      "info-box": "none",
+      "single-page-mode": "true",
+      "run-across-sites": "true",
+      langs: "de-DE",
+      "positionm": "fixed",
+      "bottomm": "1.25rem",
+      "rightm": "1.25rem",
+      "z-indexm": "9998",
+    };
+
+    Object.entries(easySpeechAttributes).forEach(([name, value]) => {
+      easySpeech.setAttribute(name, value);
+    });
+
+    document.body.appendChild(easySpeech);
+
     const positionAssist = () => {
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const assist = shadowRoot?.getElementById("eyeAble_columID");
@@ -43,7 +70,10 @@ const App = () => {
 
     positionAssist();
     const interval = window.setInterval(positionAssist, 250);
-    return () => window.clearInterval(interval);
+    return () => {
+      window.clearInterval(interval);
+      easySpeech.remove();
+    };
   }, []);
 
   return (
@@ -51,24 +81,6 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <button
-        id="easy-speech-custom"
-        type="button"
-        aria-label="Einfache Sprache öffnen"
-        onClick={async () => {
-          const api = (window as Window & { EA?: { isEasyActive: () => boolean; activateEasy: () => Promise<void>; deactivateEasy: () => Promise<void> } }).EA;
-          if (!api) return;
-          try {
-            if (api.isEasyActive()) await api.deactivateEasy();
-            else await api.activateEasy();
-          } catch {
-            return;
-          }
-        }}
-        className="fixed bottom-5 right-[1.25rem] z-[60] border border-ink/20 bg-cream/95 px-3 py-2 text-xs font-bold text-ink shadow-lg backdrop-blur-sm"
-      >
-        Einfache Sprache
-      </button>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
