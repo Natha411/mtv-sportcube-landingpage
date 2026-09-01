@@ -93,6 +93,17 @@ const App = () => {
 
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const toolbar = shadowRoot?.getElementById("eyeAble_fixedHeaderToolbarID");
+      const easySpeechIcon =
+        shadowRoot?.getElementById("easy-speech-icon") ??
+        document.getElementById("easy-speech-icon");
+      easySpeechIcon?.style.setProperty("font-size", "14px", "important");
+
+      const easySpeechButton =
+        shadowRoot?.getElementById("easy-speech-btn") ??
+        document.getElementById("easy-speech-btn");
+      easySpeechButton?.style.setProperty("padding-left", "0px", "important");
+      easySpeechButton?.style.setProperty("padding-right", "0px", "important");
+
       if (toolbar) {
         toolbar.style.setProperty("display", "flex", "important");
         toolbar.style.setProperty("flex-direction", "column", "important");
