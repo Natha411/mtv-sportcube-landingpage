@@ -48,13 +48,18 @@ const App = () => {
     document.body.appendChild(easySpeech);
 
     const positionAssist = () => {
-      const isMobile = window.matchMedia("(max-width: 700px)").matches;
-      const edgeOffset = isMobile ? "1rem" : "1.25rem";
-      const assistBottom = isMobile ? "4.25rem" : "5.25rem";
+      const viewportWidth = window.innerWidth;
+      const isMobile = viewportWidth <= 700;
+      const isTablet = viewportWidth > 700 && viewportWidth < 1024;
+      const iconSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
+      const edgeOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
+      const easyBottom = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
+      const assistBottom = isMobile ? "3.75rem" : isTablet ? "4.5rem" : "5.25rem";
+      const assistScale = isMobile ? "0.7" : isTablet ? "0.86" : "1";
       easySpeech.style.setProperty("right", edgeOffset, "important");
-      easySpeech.style.setProperty("bottom", isMobile ? "1rem" : "1.25rem", "important");
-      easySpeech.style.setProperty("width", isMobile ? "44px" : "60px", "important");
-      easySpeech.style.setProperty("height", isMobile ? "44px" : "60px", "important");
+      easySpeech.style.setProperty("bottom", easyBottom, "important");
+      easySpeech.style.setProperty("width", iconSize, "important");
+      easySpeech.style.setProperty("height", iconSize, "important");
       const externalAssist = document.querySelector<HTMLElement>(
         'aside[aria-label^="Visuelle Assistenzsoftware"]',
       );
@@ -67,7 +72,7 @@ const App = () => {
         externalAssist.style.setProperty("z-index", "100001", "important");
         externalAssist.style.setProperty(
           "transform",
-          isMobile ? "scale(0.75)" : "none",
+          `scale(${assistScale})`,
           "important",
         );
         externalAssist.style.setProperty(
@@ -100,7 +105,7 @@ const App = () => {
         assist.style.setProperty("z-index", "100001", "important");
         assist.style.setProperty(
           "transform",
-          isMobile ? "scale(0.75)" : "none",
+          `scale(${assistScale})`,
           "important",
         );
         assist.style.setProperty(
