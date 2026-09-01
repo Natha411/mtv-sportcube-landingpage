@@ -88,6 +88,10 @@ const App = () => {
 
       const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (assist) {
+        assist.style.setProperty("display", "flex", "important");
+        assist.style.setProperty("flex-direction", "column", "important");
+        assist.style.setProperty("justify-content", "flex-start", "important");
+        assist.style.setProperty("align-items", "center", "important");
         assist.style.setProperty("position", "fixed", "important");
         assist.style.setProperty("top", "auto", "important");
         assist.style.setProperty("right", edgeOffset, "important");
