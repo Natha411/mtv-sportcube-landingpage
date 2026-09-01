@@ -24,6 +24,12 @@ const App = () => {
       assist.style.setProperty("bottom", "9rem", "important");
       assist.style.setProperty("left", "auto", "important");
       assist.style.setProperty("z-index", "9999", "important");
+      const icon = shadowRoot?.getElementById("mainIconID");
+      if (!icon) return;
+      icon.style.setProperty("margin-left", "0", "important");
+      icon.style.setProperty("margin-right", "0", "important");
+      icon.style.setProperty("padding-left", "10px", "important");
+      icon.style.setProperty("padding-right", "10px", "important");
     };
 
     positionAssist();
