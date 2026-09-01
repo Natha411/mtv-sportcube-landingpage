@@ -55,6 +55,16 @@ const App = () => {
         id="easy-speech-custom"
         type="button"
         aria-label="Einfache Sprache öffnen"
+        onClick={async () => {
+          const api = (window as Window & { EA?: { isEasyActive: () => boolean; activateEasy: () => Promise<void>; deactivateEasy: () => Promise<void> } }).EA;
+          if (!api) return;
+          try {
+            if (api.isEasyActive()) await api.deactivateEasy();
+            else await api.activateEasy();
+          } catch {
+            return;
+          }
+        }}
         className="fixed bottom-5 right-[1.25rem] z-[60] border border-ink/20 bg-cream/95 px-3 py-2 text-xs font-bold text-ink shadow-lg backdrop-blur-sm"
       >
         Einfache Sprache
