@@ -19,6 +19,22 @@
   .nav-link { @apply whitespace-nowrap transition-colors hover:text-sun; }
   .faq-answer-link { @apply font-bold text-coral underline decoration-coral/40 underline-offset-2 transition-colors hover:text-ink; }
   .announcement-badge { position: fixed; top: 96px; right: 1.25rem; z-index: 40; }
+  @media (max-width: 700px) {
+    .announcement-badge {
+      top: 76px;
+      right: 0;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      border-radius: 0;
+      padding: .65rem 1.25rem;
+      text-align: center;
+    }
+    easy-speech {
+      width: 44px !important;
+      height: 44px !important;
+    }
+  }
   @media (min-width: 1024px) {
     .announcement-badge { right: max(2.25rem, calc((100vw - 1440px) / 2 + 2.25rem)); }
   }

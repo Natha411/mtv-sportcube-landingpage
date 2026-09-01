@@ -30,8 +30,10 @@ const App = () => {
       "run-across-sites": "true",
       langs: "de-DE",
       "positionm": "fixed",
-      "bottomm": "1.25rem",
-      "rightm": "1.25rem",
+      "bottomm": "1rem",
+      "rightm": "1rem",
+      "widthm": "44px",
+      "heightm": "44px",
       "z-indexm": "9998",
     };
 
@@ -46,7 +48,8 @@ const App = () => {
     document.body.appendChild(easySpeech);
 
     const positionAssist = () => {
-      const assistBottom = "5.25rem";
+      const isMobile = window.matchMedia("(max-width: 700px)").matches;
+      const assistBottom = isMobile ? "4.25rem" : "5.25rem";
       const externalAssist = document.querySelector<HTMLElement>(
         'aside[aria-label^="Visuelle Assistenzsoftware"]',
       );
@@ -57,6 +60,16 @@ const App = () => {
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
         externalAssist.style.setProperty("z-index", "9999", "important");
+        externalAssist.style.setProperty(
+          "transform",
+          isMobile ? "scale(0.75)" : "none",
+          "important",
+        );
+        externalAssist.style.setProperty(
+          "transform-origin",
+          "bottom right",
+          "important",
+        );
       }
 
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
@@ -68,6 +81,16 @@ const App = () => {
         assist.style.setProperty("bottom", assistBottom, "important");
         assist.style.setProperty("left", "auto", "important");
         assist.style.setProperty("z-index", "9999", "important");
+        assist.style.setProperty(
+          "transform",
+          isMobile ? "scale(0.75)" : "none",
+          "important",
+        );
+        assist.style.setProperty(
+          "transform-origin",
+          "bottom right",
+          "important",
+        );
       }
       const icon = shadowRoot?.getElementById("mainIconID");
       if (icon) {
