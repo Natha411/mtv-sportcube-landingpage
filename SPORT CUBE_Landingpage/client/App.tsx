@@ -14,17 +14,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    const easySpeechEl = document.createElement("easy-speech");
-    easySpeechEl.setAttribute("display", "flex");
-    easySpeechEl.setAttribute("position", "fixed");
-    easySpeechEl.setAttribute("top", "15%");
-    easySpeechEl.setAttribute("right", "5%");
-    easySpeechEl.setAttribute("lang", "de");
-    document.body.appendChild(easySpeechEl);
-
     const positionAssist = () => {
-      const speech = document.querySelector<HTMLElement>("easy-speech");
-      speech?.style.setProperty("margin-right", "0", "important");
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (assist) {
@@ -53,10 +43,7 @@ const App = () => {
 
     positionAssist();
     const interval = window.setInterval(positionAssist, 250);
-    return () => {
-      window.clearInterval(interval);
-      easySpeechEl.remove();
-    };
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
@@ -64,6 +51,14 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <button
+        id="easy-speech-custom"
+        type="button"
+        aria-label="Einfache Sprache öffnen"
+        className="fixed bottom-5 right-[1.25rem] z-[60] border border-ink/20 bg-cream/95 px-3 py-2 text-xs font-bold text-ink shadow-lg backdrop-blur-sm"
+      >
+        Einfache Sprache
+      </button>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
