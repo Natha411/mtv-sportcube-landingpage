@@ -1,7 +1,7 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createElement, useEffect } from "react";
+import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +14,14 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
+    const easySpeechEl = document.createElement("easy-speech");
+    easySpeechEl.setAttribute("display", "flex");
+    easySpeechEl.setAttribute("position", "fixed");
+    easySpeechEl.setAttribute("top", "15%");
+    easySpeechEl.setAttribute("right", "5%");
+    easySpeechEl.setAttribute("lang", "de");
+    document.body.appendChild(easySpeechEl);
+
     const positionAssist = () => {
       const speech = document.querySelector<HTMLElement>("easy-speech");
       speech?.style.setProperty("margin-right", "0", "important");
@@ -45,7 +53,10 @@ const App = () => {
 
     positionAssist();
     const interval = window.setInterval(positionAssist, 250);
-    return () => window.clearInterval(interval);
+    return () => {
+      window.clearInterval(interval);
+      easySpeechEl.remove();
+    };
   }, []);
 
   return (
@@ -53,9 +64,6 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="pointer-events-auto fixed bottom-5 right-[1.25rem] z-[60]">
-        {createElement("easy-speech")}
-      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
