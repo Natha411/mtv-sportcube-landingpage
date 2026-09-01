@@ -18,18 +18,21 @@
   .section-title .location-heading-primary { @apply text-ink; }
   .nav-link { @apply whitespace-nowrap transition-colors hover:text-sun; }
   .faq-answer-link { @apply font-bold text-coral underline decoration-coral/40 underline-offset-2 transition-colors hover:text-ink; }
-  .announcement-badge { position: fixed; top: 96px; right: 1.25rem; z-index: 40; }
+  .announcement-badge { position: fixed; top: 96px; right: 1.25rem; z-index: 100000 !important; }
   @media (max-width: 700px) {
     .announcement-badge {
       position: absolute;
       top: 96px;
       right: 1rem;
       left: auto;
-      width: 180px;
+      width: 160px;
       max-width: calc(100vw - 2rem);
-      border-radius: 1rem;
-      padding: .75rem 1rem;
+      border-radius: .85rem;
+      padding: .6rem .8rem;
       text-align: right;
+    }
+    .announcement-badge p:last-child {
+      font-size: 1.25rem;
     }
     easy-speech {
       width: 44px !important;
