@@ -78,6 +78,14 @@ const App = () => {
       }
 
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
+      const toolbar = shadowRoot?.getElementById("eyeAble_fixedHeaderToolbarID");
+      if (toolbar) {
+        toolbar.style.setProperty("display", "flex", "important");
+        toolbar.style.setProperty("flex-direction", "column", "important");
+        toolbar.style.setProperty("justify-content", "flex-end", "important");
+        toolbar.style.setProperty("align-items", "flex-end", "important");
+      }
+
       const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (assist) {
         assist.style.setProperty("position", "fixed", "important");
