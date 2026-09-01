@@ -1,6 +1,7 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
+import { createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,6 +17,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <div className="pointer-events-auto fixed bottom-5 right-20 z-[60] flex h-12 w-12 items-center justify-center rounded-full bg-ink/95 text-white shadow-lg lg:bottom-6 lg:right-6">
+        {createElement("easy-speech")}
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
