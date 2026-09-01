@@ -19,7 +19,7 @@ const App = () => {
       if (!assist) return;
       if (assist.style.getPropertyValue("top") !== "auto") assist.style.setProperty("top", "auto", "important");
       if (assist.style.getPropertyValue("right") !== "1.25rem") assist.style.setProperty("right", "1.25rem", "important");
-      if (assist.style.getPropertyValue("bottom") !== "5rem") assist.style.setProperty("bottom", "5rem", "important");
+      if (assist.style.getPropertyValue("bottom") !== "9rem") assist.style.setProperty("bottom", "9rem", "important");
       if (assist.style.getPropertyValue("left") !== "auto") assist.style.setProperty("left", "auto", "important");
       if (assist.style.getPropertyValue("z-index") !== "9999") assist.style.setProperty("z-index", "9999", "important");
     };

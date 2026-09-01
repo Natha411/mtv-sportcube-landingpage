@@ -45,7 +45,7 @@
   .sponsor-track { display: flex; width: max-content; align-items: center; gap: 3.5rem; animation: sponsor-marquee 30s linear infinite; }
   .sponsor-logo { display: inline-flex; align-items: center; min-height: 3rem; white-space: nowrap; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.15rem, 2vw, 1.65rem); font-weight: 700; letter-spacing: -0.04em; }
   @keyframes sponsor-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .eyeAble_container_b, #eyeAble_container_ID { position: fixed !important; top: auto !important; right: 1.25rem !important; bottom: 5rem !important; left: auto !important; z-index: 9999 !important; }
+  .eyeAble_container_b, #eyeAble_container_ID { position: fixed !important; top: auto !important; right: 1.25rem !important; bottom: 9rem !important; left: auto !important; z-index: 9999 !important; }
   .offer-track { --offer-card-width: calc(100vw - 2.5rem); --offer-step: calc(var(--offer-card-width) + 1rem); }
   .offer-track > article { flex: 0 0 var(--offer-card-width); min-width: 0; }
   @media (min-width: 640px) {
