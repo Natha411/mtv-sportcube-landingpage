@@ -15,19 +15,20 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const positionAssist = () => {
-      const assist = document.querySelector<HTMLElement>(".eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^='eyeAble_container']");
+      const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
+      const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (!assist) return;
-      if (assist.style.getPropertyValue("top") !== "auto") assist.style.setProperty("top", "auto", "important");
-      if (assist.style.getPropertyValue("right") !== "1.25rem") assist.style.setProperty("right", "1.25rem", "important");
-      if (assist.style.getPropertyValue("bottom") !== "9rem") assist.style.setProperty("bottom", "9rem", "important");
-      if (assist.style.getPropertyValue("left") !== "auto") assist.style.setProperty("left", "auto", "important");
-      if (assist.style.getPropertyValue("z-index") !== "9999") assist.style.setProperty("z-index", "9999", "important");
+      assist.style.setProperty("position", "fixed", "important");
+      assist.style.setProperty("top", "auto", "important");
+      assist.style.setProperty("right", "1.25rem", "important");
+      assist.style.setProperty("bottom", "9rem", "important");
+      assist.style.setProperty("left", "auto", "important");
+      assist.style.setProperty("z-index", "9999", "important");
     };
 
     positionAssist();
-    const observer = new MutationObserver(positionAssist);
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["style", "class"] });
-    return () => observer.disconnect();
+    const interval = window.setInterval(positionAssist, 250);
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
