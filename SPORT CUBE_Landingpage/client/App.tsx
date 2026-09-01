@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const positionAssist = () => {
-      const assist = document.querySelector<HTMLElement>(".eyeAble_container_b, #eyeAble_container_ID");
+      const assist = document.querySelector<HTMLElement>(".eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^='eyeAble_container']");
       if (!assist) return;
       if (assist.style.getPropertyValue("top") !== "auto") assist.style.setProperty("top", "auto", "important");
       if (assist.style.getPropertyValue("right") !== "1.25rem") assist.style.setProperty("right", "1.25rem", "important");
