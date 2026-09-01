@@ -39,16 +39,33 @@ const App = () => {
       easySpeech.setAttribute(name, value);
     });
 
+    easySpeech.style.setProperty("position", "fixed", "important");
+    easySpeech.style.setProperty("right", "1.25rem", "important");
+    easySpeech.style.setProperty("bottom", "1.25rem", "important");
+    easySpeech.style.setProperty("z-index", "9998", "important");
     document.body.appendChild(easySpeech);
 
     const positionAssist = () => {
+      const assistBottom = "5.25rem";
+      const externalAssist = document.querySelector<HTMLElement>(
+        'aside[aria-label^="Visuelle Assistenzsoftware"]',
+      );
+      if (externalAssist) {
+        externalAssist.style.setProperty("position", "fixed", "important");
+        externalAssist.style.setProperty("top", "auto", "important");
+        externalAssist.style.setProperty("right", "1.25rem", "important");
+        externalAssist.style.setProperty("bottom", assistBottom, "important");
+        externalAssist.style.setProperty("left", "auto", "important");
+        externalAssist.style.setProperty("z-index", "9999", "important");
+      }
+
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (assist) {
         assist.style.setProperty("position", "fixed", "important");
         assist.style.setProperty("top", "auto", "important");
         assist.style.setProperty("right", "1.25rem", "important");
-        assist.style.setProperty("bottom", "9rem", "important");
+        assist.style.setProperty("bottom", assistBottom, "important");
         assist.style.setProperty("left", "auto", "important");
         assist.style.setProperty("z-index", "9999", "important");
       }
