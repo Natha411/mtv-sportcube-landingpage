@@ -15,6 +15,8 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const positionAssist = () => {
+      const speech = document.querySelector<HTMLElement>("easy-speech");
+      speech?.style.setProperty("margin-right", "0", "important");
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
       const assist = shadowRoot?.getElementById("eyeAble_columID");
       if (!assist) return;
@@ -42,7 +44,7 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="pointer-events-auto fixed bottom-5 right-5 z-[60]">
+      <div className="pointer-events-auto fixed bottom-5 right-[1.25rem] z-[60]">
         {createElement("easy-speech")}
       </div>
       <BrowserRouter>
