@@ -64,7 +64,7 @@ const App = () => {
         externalAssist.style.setProperty("right", edgeOffset, "important");
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
-        externalAssist.style.setProperty("z-index", "9999", "important");
+        externalAssist.style.setProperty("z-index", "100001", "important");
         externalAssist.style.setProperty(
           "transform",
           isMobile ? "scale(0.75)" : "none",
@@ -97,7 +97,7 @@ const App = () => {
         assist.style.setProperty("right", edgeOffset, "important");
         assist.style.setProperty("bottom", assistBottom, "important");
         assist.style.setProperty("left", "auto", "important");
-        assist.style.setProperty("z-index", "9999", "important");
+        assist.style.setProperty("z-index", "100001", "important");
         assist.style.setProperty(
           "transform",
           isMobile ? "scale(0.75)" : "none",
