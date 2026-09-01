@@ -28,8 +28,8 @@ const App = () => {
       if (!icon) return;
       icon.style.setProperty("margin-left", "0", "important");
       icon.style.setProperty("margin-right", "0", "important");
-      icon.style.setProperty("padding-left", "10px", "important");
-      icon.style.setProperty("padding-right", "10px", "important");
+      icon.style.setProperty("padding-left", "0px", "important");
+      icon.style.setProperty("padding-right", "0px", "important");
     };
 
     positionAssist();
