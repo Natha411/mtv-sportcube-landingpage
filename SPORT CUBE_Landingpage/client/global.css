@@ -18,7 +18,27 @@
   .section-title .location-heading-primary { @apply text-ink; }
   .nav-link { @apply whitespace-nowrap transition-colors hover:text-sun; }
   .faq-answer-link { @apply font-bold text-coral underline decoration-coral/40 underline-offset-2 transition-colors hover:text-ink; }
-  .announcement-badge { position: fixed; top: 96px; right: 1.25rem; z-index: 40; }
+  .announcement-badge { position: fixed; top: 96px; right: 1.25rem; z-index: 100000 !important; }
+  @media (max-width: 700px) {
+    .announcement-badge {
+      position: absolute;
+      top: 96px;
+      right: 1rem;
+      left: auto;
+      width: 160px;
+      max-width: calc(100vw - 2rem);
+      border-radius: .85rem;
+      padding: .6rem .8rem;
+      text-align: right;
+    }
+    .announcement-badge p:last-child {
+      font-size: 1.25rem;
+    }
+    easy-speech {
+      width: 44px !important;
+      height: 44px !important;
+    }
+  }
   @media (min-width: 1024px) {
     .announcement-badge { right: max(2.25rem, calc((100vw - 1440px) / 2 + 2.25rem)); }
   }
@@ -40,6 +60,19 @@
   }
   @media (max-width: 767px) {
     #angebot > div > div:first-child > div:last-child button { top: 390px; }
+  }
+  .sponsor-marquee { overflow: hidden; width: 100%; }
+  .sponsor-track { display: flex; width: max-content; align-items: center; gap: 3.5rem; animation: sponsor-marquee 30s linear infinite; }
+  .sponsor-logo { display: inline-flex; align-items: center; min-height: 3rem; white-space: nowrap; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.15rem, 2vw, 1.65rem); font-weight: 700; letter-spacing: -0.04em; }
+  @keyframes sponsor-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[aria-label^="Visuelle Assistenzsoftware"] { position: fixed !important; top: auto !important; right: 1.25rem !important; bottom: 5.25rem !important; left: auto !important; z-index: 100001 !important; }
+  @media (max-width: 700px) {
+    .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[aria-label^="Visuelle Assistenzsoftware"] { right: .75rem !important; bottom: 3.75rem !important; }
+    easy-speech { width: 44px !important; height: 44px !important; right: .75rem !important; bottom: .75rem !important; }
+  }
+  @media (min-width: 701px) and (max-width: 1023px) {
+    .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[aria-label^="Visuelle Assistenzsoftware"] { right: 1rem !important; bottom: 4.5rem !important; }
+    easy-speech { width: 52px !important; height: 52px !important; right: 1rem !important; bottom: 1rem !important; }
   }
   .offer-track { --offer-card-width: calc(100vw - 2.5rem); --offer-step: calc(var(--offer-card-width) + 1rem); }
   .offer-track > article { flex: 0 0 var(--offer-card-width); min-width: 0; }
