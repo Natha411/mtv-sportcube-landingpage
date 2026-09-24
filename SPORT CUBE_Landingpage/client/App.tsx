@@ -74,6 +74,11 @@ const App = () => {
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
         externalAssist.style.setProperty("z-index", "100001", "important");
+        externalAssist.style.setProperty("background", "transparent", "important");
+        externalAssist.style.setProperty("border", "0", "important");
+        externalAssist.style.setProperty("box-shadow", "none", "important");
+        externalAssist.style.setProperty("padding", "0", "important");
+        externalAssist.style.setProperty("margin", "0", "important");
       }
 
     };
