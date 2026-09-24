@@ -34,10 +34,6 @@
     .announcement-badge p:last-child {
       font-size: 1.25rem;
     }
-    easy-speech {
-      width: 44px !important;
-      height: 44px !important;
-    }
   }
   @media (min-width: 1024px) {
     .announcement-badge { right: max(2.25rem, calc((100vw - 1440px) / 2 + 2.25rem)); }
@@ -72,7 +68,6 @@
   }
   @media (min-width: 701px) and (max-width: 1023px) {
     .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[id*="eyeAble"], aside[class*="eyeAble"], aside[aria-label*="Visuelle Assistenzsoftware"], aside[aria-label*="assistente visivo"] { right: 1rem !important; bottom: 4.5rem !important; }
-    easy-speech { width: 52px !important; height: 52px !important; right: 1rem !important; bottom: 1rem !important; }
   }
   .offer-track { --offer-card-width: calc(100vw - 2.5rem); --offer-step: calc(var(--offer-card-width) + 1rem); }
   .offer-track > article { flex: 0 0 var(--offer-card-width); min-width: 0; }

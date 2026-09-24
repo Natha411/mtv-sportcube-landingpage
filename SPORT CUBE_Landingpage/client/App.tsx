@@ -15,7 +15,6 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const easySpeech = document.createElement("easy-speech");
-    const translationSelect = document.createElement("translation-select");
     const easySpeechAttributes = {
       display: "flex",
       position: "fixed",
@@ -30,64 +29,33 @@ const App = () => {
       "single-page-mode": "true",
       "run-across-sites": "true",
       langs: "de-DE",
-      "positionm": "fixed",
-      "bottomm": "1rem",
-      "rightm": "1rem",
-      "widthm": "44px",
-      "heightm": "44px",
+      positionm: "fixed",
+      bottomm: "1rem",
+      rightm: "1rem",
+      widthm: "44px",
+      heightm: "44px",
       "z-indexm": "9998",
     };
 
     Object.entries(easySpeechAttributes).forEach(([name, value]) => {
       easySpeech.setAttribute(name, value);
     });
-
-    const translationAttributes = {
-      langs: "de-DE,en-GB,fr,es,it,nl,pl,pt,tr,uk,ar,zh",
-      selectui: "standard",
-      selectuimobile: "simple",
-      display: "flex",
-      position: "fixed",
-      bottom: "1.25rem",
-      right: "5.75rem",
-      width: "52px",
-      height: "52px",
-      "z-index": "9998",
-      "bg-color": "#151414",
-      fill: "#ffffff",
-      "border-radius": "9999px",
-      "single-page-mode": "true",
-    };
-
-    Object.entries(translationAttributes).forEach(([name, value]) => {
-      translationSelect.setAttribute(name, value);
-    });
-
-    easySpeech.style.setProperty("position", "fixed", "important");
-    easySpeech.style.setProperty("right", "1.25rem", "important");
-    easySpeech.style.setProperty("bottom", "1.25rem", "important");
-    easySpeech.style.setProperty("z-index", "9998", "important");
-    document.body.appendChild(translationSelect);
     document.body.appendChild(easySpeech);
 
     const positionAssist = () => {
       const viewportWidth = window.innerWidth;
       const isMobile = viewportWidth <= 700;
       const isTablet = viewportWidth > 700 && viewportWidth < 1024;
-      const iconSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
       const edgeOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
-      const easyBottom = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
       const assistBottom = isMobile ? "3.75rem" : isTablet ? "4.5rem" : "5.25rem";
-      const translationRight = isMobile ? "4.25rem" : isTablet ? "5rem" : "5.75rem";
-      const translationSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
-      easySpeech.style.setProperty("right", edgeOffset, "important");
-      easySpeech.style.setProperty("bottom", easyBottom, "important");
-      easySpeech.style.setProperty("width", iconSize, "important");
-      easySpeech.style.setProperty("height", iconSize, "important");
-      translationSelect.style.setProperty("right", translationRight, "important");
-      translationSelect.style.setProperty("bottom", easyBottom, "important");
-      translationSelect.style.setProperty("width", translationSize, "important");
-      translationSelect.style.setProperty("height", translationSize, "important");
+      const easySpeechSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
+      const easySpeechOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
+      easySpeech.style.setProperty("position", "fixed", "important");
+      easySpeech.style.setProperty("right", easySpeechOffset, "important");
+      easySpeech.style.setProperty("bottom", easySpeechOffset, "important");
+      easySpeech.style.setProperty("width", easySpeechSize, "important");
+      easySpeech.style.setProperty("height", easySpeechSize, "important");
+      easySpeech.style.setProperty("z-index", "9998", "important");
       const externalAssist = Array.from(
         document.querySelectorAll<HTMLElement>("aside"),
       ).find((aside) => aside.querySelector("a.eyeAble_hiddenOpener"));
@@ -106,7 +74,6 @@ const App = () => {
     const interval = window.setInterval(positionAssist, 250);
     return () => {
       window.clearInterval(interval);
-      translationSelect.remove();
       easySpeech.remove();
     };
   }, []);
