@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const easySpeech = document.createElement("easy-speech");
+    const translationSelect = document.createElement("translation-select");
     const easySpeechAttributes = {
       display: "flex",
       position: "fixed",
@@ -41,10 +42,32 @@ const App = () => {
       easySpeech.setAttribute(name, value);
     });
 
+    const translationAttributes = {
+      langs: "de-DE,en-GB,fr,es,it,nl,pl,pt,tr,uk,ar,zh",
+      selectui: "standard",
+      selectuimobile: "simple",
+      display: "flex",
+      position: "fixed",
+      bottom: "1.25rem",
+      right: "5.75rem",
+      width: "52px",
+      height: "52px",
+      "z-index": "9998",
+      "bg-color": "#151414",
+      fill: "#ffffff",
+      "border-radius": "9999px",
+      "single-page-mode": "true",
+    };
+
+    Object.entries(translationAttributes).forEach(([name, value]) => {
+      translationSelect.setAttribute(name, value);
+    });
+
     easySpeech.style.setProperty("position", "fixed", "important");
     easySpeech.style.setProperty("right", "1.25rem", "important");
     easySpeech.style.setProperty("bottom", "1.25rem", "important");
     easySpeech.style.setProperty("z-index", "9998", "important");
+    document.body.appendChild(translationSelect);
     document.body.appendChild(easySpeech);
 
     const positionAssist = () => {
@@ -55,11 +78,16 @@ const App = () => {
       const edgeOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
       const easyBottom = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
       const assistBottom = isMobile ? "3.75rem" : isTablet ? "4.5rem" : "5.25rem";
-      const assistScale = isMobile ? "0.7" : isTablet ? "0.86" : "1";
+      const translationRight = isMobile ? "4.25rem" : isTablet ? "5rem" : "5.75rem";
+      const translationSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
       easySpeech.style.setProperty("right", edgeOffset, "important");
       easySpeech.style.setProperty("bottom", easyBottom, "important");
       easySpeech.style.setProperty("width", iconSize, "important");
       easySpeech.style.setProperty("height", iconSize, "important");
+      translationSelect.style.setProperty("right", translationRight, "important");
+      translationSelect.style.setProperty("bottom", easyBottom, "important");
+      translationSelect.style.setProperty("width", translationSize, "important");
+      translationSelect.style.setProperty("height", translationSize, "important");
       const externalAssist = document.querySelector<HTMLElement>(
         'aside[aria-label^="Visuelle Assistenzsoftware"]',
       );
@@ -79,90 +107,15 @@ const App = () => {
         externalAssist.style.setProperty("height", "max-content", "important");
         externalAssist.style.setProperty("min-width", "0", "important");
         externalAssist.style.setProperty("min-height", "0", "important");
-        externalAssist.style.setProperty(
-          "transform",
-          `scale(${assistScale})`,
-          "important",
-        );
-        externalAssist.style.setProperty(
-          "transform-origin",
-          "bottom right",
-          "important",
-        );
       }
 
-      const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
-      const toolbar = shadowRoot?.getElementById("eyeAble_fixedHeaderToolbarID");
-      const easySpeechIcon =
-        shadowRoot?.getElementById("easy-speech-icon") ??
-        document.getElementById("easy-speech-icon");
-      easySpeechIcon?.style.setProperty("font-size", "14px", "important");
-
-      const easySpeechButton =
-        shadowRoot?.getElementById("easy-speech-btn") ??
-        document.getElementById("easy-speech-btn");
-      easySpeechButton?.style.setProperty("padding-left", "0px", "important");
-      easySpeechButton?.style.setProperty("padding-right", "0px", "important");
-
-      if (toolbar) {
-        toolbar.style.setProperty("display", "flex", "important");
-        toolbar.style.setProperty("flex-direction", "column", "important");
-        toolbar.style.setProperty("justify-content", "flex-end", "important");
-        toolbar.style.setProperty("align-items", "flex-end", "important");
-        toolbar.style.setProperty("background", "transparent", "important");
-        toolbar.style.setProperty("border", "0", "important");
-        toolbar.style.setProperty("box-shadow", "none", "important");
-        toolbar.style.setProperty("padding", "0", "important");
-        toolbar.style.setProperty("margin", "0", "important");
-        toolbar.style.setProperty("width", "max-content", "important");
-        toolbar.style.setProperty("height", "max-content", "important");
-        toolbar.style.setProperty("min-width", "0", "important");
-        toolbar.style.setProperty("min-height", "0", "important");
-      }
-
-      const assist = shadowRoot?.getElementById("eyeAble_columID");
-      if (assist) {
-        assist.style.setProperty("display", "flex", "important");
-        assist.style.setProperty("flex-direction", "column", "important");
-        assist.style.setProperty("justify-content", "flex-start", "important");
-        assist.style.setProperty("align-items", "center", "important");
-        assist.style.setProperty("position", "fixed", "important");
-        assist.style.setProperty("top", "auto", "important");
-        assist.style.setProperty("right", edgeOffset, "important");
-        assist.style.setProperty("bottom", assistBottom, "important");
-        assist.style.setProperty("left", "auto", "important");
-        assist.style.setProperty("z-index", "100001", "important");
-        assist.style.setProperty(
-          "transform",
-          `scale(${assistScale})`,
-          "important",
-        );
-        assist.style.setProperty(
-          "transform-origin",
-          "bottom right",
-          "important",
-        );
-      }
-      const icon = shadowRoot?.getElementById("mainIconID");
-      if (icon) {
-        icon.style.setProperty("margin-left", "0", "important");
-        icon.style.setProperty("margin-right", "0", "important");
-        icon.style.setProperty("padding-left", "0px", "important");
-        icon.style.setProperty("padding-right", "0px", "important");
-      }
-      const mobileLabel = shadowRoot?.querySelector<HTMLElement>('[eaarialangid="accessibleLinkTextMobile"]');
-      mobileLabel?.setAttribute("aria-label", "Visuelle Assistenzsoftware öffnen");
-      const accessibleLink = shadowRoot?.querySelector<HTMLElement>('[ealangid="accessibleLinkText"]');
-      if (accessibleLink) {
-        accessibleLink.textContent = "Visuelle Assistenzsoftware öffnen. Mit der Tastatur über ALT + 1 erreichbar";
-        accessibleLink.setAttribute("aria-label", "Visuelle Assistenzsoftware öffnen");
-      }
     };
 
     positionAssist();
     const interval = window.setInterval(positionAssist, 250);
     return () => {
       window.clearInterval(interval);
+      translationSelect.remove();
       easySpeech.remove();
     };
   }, []);
