@@ -26,7 +26,7 @@ const levels = [
   ["3. OG", "3. Obergeschoss", "Büros & Seminarraum", "Austausch, Organisation und Weiterentwicklung für den Verein.", ["Workshops", "Fortbildungen", "externe Events"], "bg-ink"],
   ["2. OG", "2. Obergeschoss", "Sporthalle", "Viel Platz für Sport, Spiel und Training – inklusive Lü-System, Action Center und MultimotionCenter.", ["Vereinssport", "Schulsport", "Kindersport", "Vermietungen"], "bg-wood"],
   ["1. OG", "1. Obergeschoss", "Gymnastikhalle", "Ein vielseitiger Raum für Gymnastik, Kurse und gemeinsame Bewegung.", ["Kindersport", "Rehasport", "Yoga", "Pilates", "Tanzen"], "bg-coral"],
-  ["EG", "Erdgeschoss", "Mikrostudio", "Kurze Wege, modernes Training und ein offener Treffpunkt für alle.", ["HYROX", "Functional Fitness", "Schlingentraining", "HIIT", "Athletiktraining", "Offenes Training"], "bg-sun"],
+  ["EG", "Erdgeschoss", "Mikrostudio", "Kompakt. Intensiv. Topmoderne Ausstattung - Spezialisiertes Training für alle Niveaus.", ["HYROX", "Functional Fitness", "Schlingentraining", "HIIT", "Athletiktraining", "Offenes Training"], "bg-sun"],
   ["UG", "Untergeschoss", "Umkleiden & Sitzungsraum", "Ankommen, umziehen und aktiv werden.", ["Umkleiden", "Sitzungsraum", "Technik"], "bg-sky"],
 ] as const;
 const equipment = [
