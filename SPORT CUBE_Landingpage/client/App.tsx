@@ -88,9 +88,9 @@ const App = () => {
       translationSelect.style.setProperty("bottom", easyBottom, "important");
       translationSelect.style.setProperty("width", translationSize, "important");
       translationSelect.style.setProperty("height", translationSize, "important");
-      const externalAssist = document.querySelector<HTMLElement>(
-        'aside[aria-label^="Visuelle Assistenzsoftware"]',
-      );
+      const externalAssist = Array.from(
+        document.querySelectorAll<HTMLElement>("aside"),
+      ).find((aside) => aside.querySelector("a.eyeAble_hiddenOpener"));
       if (externalAssist) {
         externalAssist.style.setProperty("position", "fixed", "important");
         externalAssist.style.setProperty("top", "auto", "important");
@@ -98,15 +98,6 @@ const App = () => {
         externalAssist.style.setProperty("bottom", assistBottom, "important");
         externalAssist.style.setProperty("left", "auto", "important");
         externalAssist.style.setProperty("z-index", "100001", "important");
-        externalAssist.style.setProperty("background", "transparent", "important");
-        externalAssist.style.setProperty("border", "0", "important");
-        externalAssist.style.setProperty("box-shadow", "none", "important");
-        externalAssist.style.setProperty("padding", "0", "important");
-        externalAssist.style.setProperty("margin", "0", "important");
-        externalAssist.style.setProperty("width", "max-content", "important");
-        externalAssist.style.setProperty("height", "max-content", "important");
-        externalAssist.style.setProperty("min-width", "0", "important");
-        externalAssist.style.setProperty("min-height", "0", "important");
       }
 
     };
