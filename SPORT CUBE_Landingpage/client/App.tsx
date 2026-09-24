@@ -47,9 +47,9 @@ const App = () => {
       const isMobile = viewportWidth <= 700;
       const isTablet = viewportWidth > 700 && viewportWidth < 1024;
       const edgeOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
-      const assistBottom = isMobile ? "3.75rem" : isTablet ? "4.5rem" : "5.25rem";
       const easySpeechSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
       const easySpeechOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
+      const assistBottom = `calc(${easySpeechOffset} + ${easySpeechSize} + 2px)`;
       easySpeech.style.setProperty("position", "fixed", "important");
       easySpeech.style.setProperty("right", easySpeechOffset, "important");
       easySpeech.style.setProperty("bottom", easySpeechOffset, "important");
