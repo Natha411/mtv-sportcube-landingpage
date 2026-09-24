@@ -64,6 +64,15 @@ const App = () => {
       easySpeechButton?.style.setProperty("padding-right", "0px", "important");
       easySpeechButton?.style.setProperty("padding-top", "0px", "important");
       easySpeechButton?.style.setProperty("padding-bottom", "0px", "important");
+      const assistColumn = shadowRoot?.getElementById("eyeAble_columID");
+      if (assistColumn) {
+        assistColumn.style.setProperty("position", "fixed", "important");
+        assistColumn.style.setProperty("top", "auto", "important");
+        assistColumn.style.setProperty("right", edgeOffset, "important");
+        assistColumn.style.setProperty("bottom", assistBottom, "important");
+        assistColumn.style.setProperty("left", "auto", "important");
+        assistColumn.style.setProperty("z-index", "100001", "important");
+      }
       const externalAssist = Array.from(
         document.querySelectorAll<HTMLElement>("aside"),
       ).find((aside) => aside.querySelector("a.eyeAble_hiddenOpener"));
