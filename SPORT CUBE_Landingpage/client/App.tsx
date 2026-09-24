@@ -56,6 +56,14 @@ const App = () => {
       easySpeech.style.setProperty("width", easySpeechSize, "important");
       easySpeech.style.setProperty("height", easySpeechSize, "important");
       easySpeech.style.setProperty("z-index", "9998", "important");
+      const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
+      const easySpeechButton =
+        shadowRoot?.getElementById("easy-speech-btn") ??
+        document.getElementById("easy-speech-btn");
+      easySpeechButton?.style.setProperty("padding-left", "0px", "important");
+      easySpeechButton?.style.setProperty("padding-right", "0px", "important");
+      easySpeechButton?.style.setProperty("padding-top", "0px", "important");
+      easySpeechButton?.style.setProperty("padding-bottom", "0px", "important");
       const externalAssist = Array.from(
         document.querySelectorAll<HTMLElement>("aside"),
       ).find((aside) => aside.querySelector("a.eyeAble_hiddenOpener"));
