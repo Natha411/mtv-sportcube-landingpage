@@ -64,7 +64,6 @@
   .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[id*="eyeAble"], aside[class*="eyeAble"], aside[aria-label*="Visuelle Assistenzsoftware"], aside[aria-label*="assistente visivo"] { position: fixed !important; top: auto !important; right: 1.25rem !important; bottom: calc(1.25rem + 60px + 2px) !important; left: auto !important; z-index: 100001 !important; }
   @media (max-width: 700px) {
     .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[id*="eyeAble"], aside[class*="eyeAble"], aside[aria-label*="Visuelle Assistenzsoftware"], aside[aria-label*="assistente visivo"] { right: .75rem !important; bottom: calc(.75rem + 44px + 2px) !important; }
-    easy-speech { width: 44px !important; height: 44px !important; right: .75rem !important; bottom: .75rem !important; }
   }
   @media (min-width: 701px) and (max-width: 1023px) {
     .eyeAble_container_b, #eyeAble_container_b, #eyeAble_container_ID, [id^="eyeAble_container"], aside[id*="eyeAble"], aside[class*="eyeAble"], aside[aria-label*="Visuelle Assistenzsoftware"], aside[aria-label*="assistente visivo"] { right: 1rem !important; bottom: calc(1rem + 52px + 2px) !important; }
