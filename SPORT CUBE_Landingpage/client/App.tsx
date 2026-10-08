@@ -14,56 +14,15 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    const easySpeech = document.createElement("easy-speech");
-    const easySpeechAttributes = {
-      display: "flex",
-      position: "fixed",
-      bottom: "1.25rem",
-      right: "1.25rem",
-      width: "60px",
-      height: "60px",
-      "z-index": "9998",
-      "bg-color": "#151414",
-      fill: "#ffffff",
-      "info-box": "none",
-      "single-page-mode": "true",
-      "run-across-sites": "true",
-      langs: "de-DE",
-      positionm: "fixed",
-      bottomm: "1rem",
-      rightm: "1rem",
-      widthm: "44px",
-      heightm: "44px",
-      "z-indexm": "9998",
-    };
-
-    Object.entries(easySpeechAttributes).forEach(([name, value]) => {
-      easySpeech.setAttribute(name, value);
-    });
-    document.body.appendChild(easySpeech);
-
     const positionAssist = () => {
       const viewportWidth = window.innerWidth;
       const isMobile = viewportWidth <= 700;
       const isTablet = viewportWidth > 700 && viewportWidth < 1024;
       const edgeOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
-      const easySpeechSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
-      const easySpeechOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
-      const assistBottom = `calc(${easySpeechOffset} + ${easySpeechSize} + 2px)`;
-      easySpeech.style.setProperty("position", "fixed", "important");
-      easySpeech.style.setProperty("right", easySpeechOffset, "important");
-      easySpeech.style.setProperty("bottom", easySpeechOffset, "important");
-      easySpeech.style.setProperty("width", easySpeechSize, "important");
-      easySpeech.style.setProperty("height", easySpeechSize, "important");
-      easySpeech.style.setProperty("z-index", "9998", "important");
+      const languageButtonSize = isMobile ? "44px" : isTablet ? "52px" : "60px";
+      const languageButtonOffset = isMobile ? "0.75rem" : isTablet ? "1rem" : "1.25rem";
+      const assistBottom = `calc(${languageButtonOffset} + ${languageButtonSize} + 2px)`;
       const shadowRoot = (window as Window & { eyeAble_shadowRoot?: ShadowRoot }).eyeAble_shadowRoot;
-      const easySpeechButton =
-        shadowRoot?.getElementById("easy-speech-btn") ??
-        document.getElementById("easy-speech-btn");
-      easySpeechButton?.style.setProperty("padding-left", "0px", "important");
-      easySpeechButton?.style.setProperty("padding-right", "0px", "important");
-      easySpeechButton?.style.setProperty("padding-top", "0px", "important");
-      easySpeechButton?.style.setProperty("padding-bottom", "0px", "important");
       const assistColumn = shadowRoot?.getElementById("eyeAble_columID");
       if (assistColumn) {
         assistColumn.style.setProperty("position", "fixed", "important");
@@ -96,7 +55,6 @@ const App = () => {
     const interval = window.setInterval(positionAssist, 250);
     return () => {
       window.clearInterval(interval);
-      easySpeech.remove();
     };
   }, []);
 
